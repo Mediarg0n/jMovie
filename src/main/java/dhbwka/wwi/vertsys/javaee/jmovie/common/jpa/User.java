@@ -46,6 +46,15 @@ public class User implements Serializable {
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
     
+    @Column(name = "VORNAME", length = 64)
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
+    private String vorname;
+    
+    @Column(name = "NACHNAME", length = 64)
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
+    private String nachname;
+    
+    
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
         public String password = "";
@@ -59,7 +68,7 @@ public class User implements Serializable {
 
     @ElementCollection
     @CollectionTable(
-            name = "JTODO_USER_GROUP",
+            name = "JMOVIE_USER_GROUP",
             joinColumns = @JoinColumn(name = "USERNAME")
     )
     @Column(name = "GROUPNAME")
@@ -72,8 +81,10 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String vorname, String nachname, String password) {
         this.username = username;
+        this.vorname = vorname;
+        this.nachname = nachname; 
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
     }
@@ -87,7 +98,22 @@ public class User implements Serializable {
     public void setUsername(String id) {
         this.username = id;
     }
+    
+    public String getVorname() {
+        return vorname;
+    }
 
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+    
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
     public List<Task> getTasks() {
         return tasks;
     }
