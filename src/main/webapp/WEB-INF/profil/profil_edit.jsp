@@ -44,15 +44,38 @@
                         Vorname:
                         <span class="required">*</span>
                     </label>
-                    <input type="text" name="profil_vorname" value="${user.vorname}">
+                    <c:choose>
+                        <c:when test="${empty profil_form}">
+                            <input type="text" name="profil_vorname" value="${user.vorname}">
+                        </c:when>
+                        <c:otherwise>
+                            <input type="text" name="profil_vorname" value="${profil_form.values['profil_vorname'][0]}">
+                        </c:otherwise>
+                    </c:choose>
                     <label for="j_username">
                         Nachname:
                         <span class="required">*</span>
                     </label>
-                    <input type="text" name="profil_nachname" value="${user.nachname}">
+                    <c:choose>
+                        <c:when test="${empty profil_form}">
+                            <input type="text" name="profil_nachname" value="${user.nachname}">
+                        </c:when>
+                        <c:otherwise>
+                            <input type="text" name="profil_nachname" value="${profil_form.values['profil_nachname'][0]}">
+                        </c:otherwise>
+                    </c:choose>
 
                     <button type="submit" name="action" value="save">Änderung speichern</button>
                 </div>
+                
+                <%-- Fehlermeldungen --%>
+                <c:if test="${!empty profil_form.errors}">
+                    <ul class="errors">
+                        <c:forEach items="${profil_form.errors}" var="error">
+                            <li>${error}</li>
+                            </c:forEach>
+                    </ul>
+                </c:if>
             </form>
                     
             <a href="<c:url value="/app/profil/edit/pw"/>">Passwort ändern</a> 
