@@ -62,7 +62,26 @@ public class ProfilEditServlet extends HttpServlet {
         }
     }
     
+    /**
+     * Updatet den aktuellen User mit dem übermittelten Werten.
+     * @param request
+     * @param response
+     * @throws IOException 
+     */
     private void saveChanges(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String profilUsername = request.getParameter("profil_username");
+        String profilVorname = request.getParameter("profil_vorname");
+        String profilNachname = request.getParameter("profil_nachname");
+        
+        User user = userBean.getCurrentUser();
+        
+        //TODO: Fehlerbehandlung
+        user.setVorname(profilVorname);
+        user.setNachname(profilNachname);
+        
+        
+        userBean.update(user);
+        
         response.sendRedirect(WebUtils.appUrl(request, "/app/profil/"));
     }
 

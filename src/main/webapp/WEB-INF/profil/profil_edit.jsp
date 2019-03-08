@@ -38,18 +38,18 @@
                     <label for="j_username">
                         Benutzername:
                     </label>
-                    <input type="text" name="j_username" value="${user.username}" readonly="readonly">
+                    <input type="text" name="profil_username" value="${user.username}" readonly="readonly">
 
                     <label for="j_username">
                         Vorname:
                         <span class="required">*</span>
                     </label>
-                    <input type="text" name="j_vorname" value="${user.vorname}">
+                    <input type="text" name="profil_vorname" value="${user.vorname}">
                     <label for="j_username">
                         Nachname:
                         <span class="required">*</span>
                     </label>
-                    <input type="text" name="j_nachname" value="${user.nachname}">
+                    <input type="text" name="profil_nachname" value="${user.nachname}">
 
                     <button type="submit" name="action" value="save">Änderung speichern</button>
                 </div>
