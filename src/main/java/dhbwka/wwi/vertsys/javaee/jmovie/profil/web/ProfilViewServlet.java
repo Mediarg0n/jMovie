@@ -11,12 +11,8 @@ package dhbwka.wwi.vertsys.javaee.jmovie.profil.web;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardContentProvider;
-import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardSection;
+import dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils;
 import java.io.IOException;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet für die Startseite mit dem Übersichts-Dashboard.
  */
 @WebServlet(urlPatterns = {"/app/profil/"})
-public class ProfilServlet extends HttpServlet {
+public class ProfilViewServlet extends HttpServlet {
 
     
     @EJB
@@ -38,14 +34,27 @@ public class ProfilServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
         User user = userBean.getCurrentUser();
         request.setAttribute("user", user);
         
-        
-
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/profil/profil_view.jsp").forward(request, response);
+    }
+    
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        // Angeforderte Aktion ausführen
+        String action = request.getParameter("action");
+
+        if (action == null) {
+            action = "";
+        }
+
+        switch (action) {
+            case "profil_edit":
+                response.sendRedirect(WebUtils.appUrl(request, "/app/profil/edit/"));
+                break;
+        }
     }
 
 }

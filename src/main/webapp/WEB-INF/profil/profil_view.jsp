@@ -6,7 +6,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Dashboard
+        User Profil
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,20 +28,22 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
-        <div>
-            Benutzername:
-            <span>${user.username}</span>
+        <div class="container">
+            <div>
+                Benutzername:
+                <span>${user.username}</span>
+            </div>
+            <div>
+                Vorname:
+                <span>${user.vorname}</span>
+            </div>
+            <div>
+                Nachname:
+                <span>${user.nachname}</span>
+            </div>
+             
+            <a href="<c:url value="/app/profil/edit/"/>">Daten ändern</a>  
+            <a href="<c:url value="/app/profil/edit/pw"/>">Passwort ändern</a>  
         </div>
-        <div>
-            Vorname:
-            <span>${user.vorname}</span>
-        </div>
-        <div>
-            Nachname:
-            <span>${user.nachname}</span>
-        </div>
-        
-        <button>Daten ändern</button>
-        <button> Passwort ändern </button>
     </jsp:attribute>
 </template:base>
