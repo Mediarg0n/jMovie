@@ -43,7 +43,7 @@
             </div>
              
             <a href="<c:url value="/app/profil/edit/"/>">Daten ändern</a>  
-            <a href="<c:url value="/app/profil/edit/pw"/>">Passwort ändern</a>  
+            <a href="<c:url value="/app/profil/edit/pw/"/>">Passwort ändern</a>  
         </div>
     </jsp:attribute>
 </template:base>

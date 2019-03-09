@@ -6,7 +6,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        User Profil Bearbeiten
+         Passwort ändern
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -35,35 +35,23 @@
                     <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                     <%-- Eingabefelder --%>
-                    <label for="profil_username">
-                        Benutzername:
+                    <label for="pw_old">
+                        Aktuelles Passwort:
+                        <span class="required">*</span>
                     </label>
-                    <input type="text" name="profil_username" value="${user.username}" readonly="readonly">
+                    <input type="password" name="pw_old">
 
-                    <label for="profil_vorname">
-                        Vorname:
+                    <label for="pw_new1">
+                        Neues Passwort:
                         <span class="required">*</span>
                     </label>
-                    <c:choose>
-                        <c:when test="${empty profil_form}">
-                            <input type="text" name="profil_vorname" value="${user.vorname}">
-                        </c:when>
-                        <c:otherwise>
-                            <input type="text" name="profil_vorname" value="${profil_form.values['profil_vorname'][0]}">
-                        </c:otherwise>
-                    </c:choose>
-                    <label for="profil_nachname">
-                        Nachname:
+                    <input type="password" name="pw_new1">
+                    
+                    <label for="pw_new2">
+                        Neues Passwort wiederholen
                         <span class="required">*</span>
                     </label>
-                    <c:choose>
-                        <c:when test="${empty profil_form}">
-                            <input type="text" name="profil_nachname" value="${user.nachname}">
-                        </c:when>
-                        <c:otherwise>
-                            <input type="text" name="profil_nachname" value="${profil_form.values['profil_nachname'][0]}">
-                        </c:otherwise>
-                    </c:choose>
+                    <input type="password" name="pw_new2">
 
                     <button type="submit" name="action" value="save">Änderung speichern</button>
                 </div>
@@ -79,7 +67,7 @@
             </form>
                     
             <a href="<c:url value="/app/profil/"/>">Zurück zum Profil</a> 
-            <a href="<c:url value="/app/profil/edit/pw/"/>">Passwort ändern</a> 
+            <a href="<c:url value="/app/profil/edit/"/>">Profil bearbeiten</a> 
             
         </div>
     </jsp:attribute>
