@@ -73,7 +73,7 @@ public class ProfilEditServlet extends HttpServlet {
      * @param response
      * @throws IOException 
      */
-    private void saveChanges(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    private void saveChanges(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String profilUsername = request.getParameter("profil_username");
         String profilVorname = request.getParameter("profil_vorname");
         String profilNachname = request.getParameter("profil_nachname");
@@ -104,5 +104,5 @@ public class ProfilEditServlet extends HttpServlet {
         }
         
     }
-
+    
 }
