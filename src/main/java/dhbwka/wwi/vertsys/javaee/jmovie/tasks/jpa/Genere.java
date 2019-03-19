@@ -10,10 +10,18 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.TableGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -23,41 +31,54 @@ import javax.persistence.Id;
 public class Genere implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "genere_ids")
+    @TableGenerator(name = "genere_ids", initialValue = 0, allocationSize = 50)
+    private long id;
 
-    public Long getId() {
+    @Column(length = 30)
+    @NotNull(message = "Der Name darf nicht leer sein.")
+    @Size(min = 3, max = 30, message = "Der Name muss zwischen drei und 30 Zeichen lang sein.")
+    private String name;
+
+    @ManyToMany(mappedBy = "genere", fetch = FetchType.LAZY)
+    List<Movie> movies = new ArrayList<>();
+    
+    //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
+    public Genere() {
+    }
+
+    public Genere(String name) {
+        this.name = name;
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Genere)) {
-            return false;
-        }
-        Genere other = (Genere) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Genere[ id=" + id + " ]";
+    public List<Movie> getMovies() {
+        return movies;
     }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+    //</editor-fold>
+    
     
 }
