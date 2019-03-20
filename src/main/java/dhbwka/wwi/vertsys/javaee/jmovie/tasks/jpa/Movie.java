@@ -13,6 +13,7 @@ import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -46,7 +47,7 @@ public class Movie implements Serializable {
     private User owner;
 
     @ManyToMany
-    private Genere genere;
+    private List<Genere> genere;
 
     @Column(length = 50)
     @NotNull(message = "Der Titel darf nicht leer sein.")
@@ -76,7 +77,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(User owner, Genere genere, String title, String description, Date releaseDate, int movieLength) {
+    public Movie(User owner, List<Genere> genere, String title, String description, Date releaseDate, int movieLength) {
         this.owner = owner;
         this.genere = genere;
         this.title = title;
@@ -104,11 +105,11 @@ public class Movie implements Serializable {
         this.owner = owner;
     }
 
-    public Genere getGenere() {
+    public List<Genere> getGenere() {
         return genere;
     }
 
-    public void setGenere(Genere genere) {
+    public void setGenere(List<Genere> genere) {
         this.genere = genere;
     }
 
