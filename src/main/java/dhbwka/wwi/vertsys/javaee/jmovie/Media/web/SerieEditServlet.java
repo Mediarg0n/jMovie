@@ -37,7 +37,7 @@ import javax.servlet.http.HttpSession;
  * Seite zum Anlegen oder Bearbeiten einer Aufgabe.
  */
 @WebServlet(urlPatterns = "/app/medias/serie/*")
-public class SerieEditServlet extends HttpServlet {
+public class SerieEditServlet extends MediaEditServlet {
 
     @EJB
     SerieBean serieBean;
@@ -55,26 +55,14 @@ public class SerieEditServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("genres", this.genreBean.findAllSorted());
-        request.setAttribute("statuses", WatchStatus.values());
-
-        // Zu bearbeitende Serie einlesen
-        HttpSession session = request.getSession();
-
         Serie serie = this.getRequestedSerie(request);
-        request.setAttribute("edit", serie.getId() != 0);
-                                
-        if (session.getAttribute("media_form") == null) {
-            // Keine Formulardaten mit fehlerhaften Daten in der Session,
-            // daher Formulardaten aus dem Datenbankobjekt übernehmen
-            request.setAttribute("media_form", this.createMediaForm(serie));
-        }
-
+        super.doGet(request, serie);
+        
+        
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/medias/serie_edit.jsp").forward(request, response);
         
-        session.removeAttribute("media_form");
+        request.getSession().removeAttribute("media_form");
     }
 
     @Override
@@ -111,44 +99,11 @@ public class SerieEditServlet extends HttpServlet {
 
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
-
-        String mediaGenre = request.getParameter("media_genre");
-        String mediaReleaseDate = request.getParameter("media_release_date");
-        String mediaStatus = request.getParameter("media_status");
-        String mediaTitle = request.getParameter("media_title");
-        String mediaDescription = request.getParameter("media_description");
-
+        
         Serie serie = this.getRequestedSerie(request);
-
-        if (mediaGenre != null && !mediaGenre.trim().isEmpty()) {
-            try {
-                List<Genre> genres = new ArrayList<Genre>();
-                genres.add(this.genreBean.findById(Long.parseLong(mediaGenre)));
-                serie.setGenre(genres);
-            } catch (NumberFormatException ex) {
-                // Ungültige oder keine ID mitgegeben
-            }
-        }
-
-        Date releaseDate = WebUtils.parseDate(mediaReleaseDate);
-
-        if (releaseDate != null) {
-            serie.setReleaseDate(releaseDate);
-        } else {
-            errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
-        }
-
-        try {
-            serie.setStatus(WatchStatus.valueOf(mediaStatus));
-        } catch (IllegalArgumentException ex) {
-            errors.add("Der ausgewählte Status ist nicht vorhanden.");
-        }
-
-        serie.setTitle(mediaTitle);
-        serie.setDescription(mediaDescription);
-
-        this.validationBean.validate(serie, errors);
-
+        
+        saveMedia(request, serie, errors);
+        
         // Datensatz speichern
         if (errors.isEmpty()) {
             this.serieBean.update(serie);
@@ -227,49 +182,6 @@ public class SerieEditServlet extends HttpServlet {
         return serie;
     }
 
-    /**
-     * Neues FormValues-Objekt erzeugen und mit den Daten eines aus der
-     * Datenbank eingelesenen Datensatzes füllen. Dadurch müssen in der JSP
-     * keine hässlichen Fallunterscheidungen gemacht werden, ob die Werte im
-     * Formular aus der Entity oder aus einer vorherigen Formulareingabe
-     * stammen.
-     *
-     * @param task Die zu bearbeitende Aufgabe
-     * media Neues, gefülltes FormValues-Objekt
-     */
-    private FormValues createMediaForm(Media media) {
-        Map<String, String[]> values = new HashMap<>();
-
-        values.put("media_owner", new String[]{
-            media.getOwner().getUsername()
-        });
-
-        if (media.getGenre()!= null) {
-            values.put("media_category", new String[]{
-                "" + media.getGenre().get(0).getId()
-            });
-        }
-
-        values.put("media_release_date", new String[]{
-            WebUtils.formatDate(media.getReleaseDate())
-        });
-
-
-        values.put("media_status", new String[]{
-            media.getStatus().toString()
-        });
-
-        values.put("media_title", new String[]{
-            media.getTitle()
-        });
-
-        values.put("media_description", new String[]{
-            media.getDescription()
-        });
-
-        FormValues formValues = new FormValues();
-        formValues.setValues(values);
-        return formValues;
-    }
+    
 
 }
