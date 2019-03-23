@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Lob;
@@ -29,10 +30,12 @@ import javax.validation.constraints.Size;
 public class Episode implements Serializable, Playable {
     
     @Id
+    @GeneratedValue
+    private long id;
+    
     @Size(min = 1, max = 50, message = "Eine Serien Staffel kann höchstens 50 Episoden haben.")
     private int nr;
     
-  //  @Id
     @ManyToOne
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Season season;
@@ -59,8 +62,9 @@ public class Episode implements Serializable, Playable {
     public Episode(){
         
     }
-    
-    public Episode(int nr, Season season, String title, Date releaseDate, int movieLength, String description) {
+
+    public Episode(long id, int nr, Season season, String title, Date releaseDate, int movieLength, String description) {
+        this.id = id;
         this.nr = nr;
         this.season = season;
         this.title = title;
@@ -75,12 +79,20 @@ public class Episode implements Serializable, Playable {
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
     
     
-    
+    //</editor-fold>
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public int getNr() {
         return nr;
     }
 
-    
     public void setNr(int nr) {
         this.nr = nr;
     }
@@ -92,56 +104,44 @@ public class Episode implements Serializable, Playable {
     public void setSeason(Season season) {
         this.season = season;
     }
-    
-    //@Override
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public Date getReleaseDate() {
         return releaseDate;
     }
 
-    //@Override
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    //@Override
     public int getMovieLength() {
         return movieLength;
     }
 
-    //@Override
     public void setMovieLength(int movieLength) {
         this.movieLength = movieLength;
     }
-    
-    
-    //@Override
+
     public int getWatchedUntil() {
         return watchedUntil;
     }
 
-    //@Override
     public void setWatchedUntil(int watchedUntil) {
         this.watchedUntil = watchedUntil;
     }
 
-    //@Override
-    public String getTitle() {
-        return title;
-     }
-
-    //@Override
-    public void setTitle(String title) {
-       this.title = title;
-    }
-
-    //@Override
     public String getDescription() {
         return description;
-     }
+    }
 
-    //@Override
     public void setDescription(String description) {
         this.description = description;
     }
-    //</editor-fold>
 }
