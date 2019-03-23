@@ -52,7 +52,7 @@
                     <select name="media_genre">
                         <option value="">Kein Genre</option>
 
-                        <c:forEach items="${genres}" var="category">
+                        <c:forEach items="${genres}" var="genre">
                             <option value="${genre.id}" ${media_form.values["media_genre"][0] == genre.id.toString() ? 'selected' : ''}>
                                 <c:out value="${genre.name}" />
                             </option>
