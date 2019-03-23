@@ -9,13 +9,9 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Episode;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Season;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Serie;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;

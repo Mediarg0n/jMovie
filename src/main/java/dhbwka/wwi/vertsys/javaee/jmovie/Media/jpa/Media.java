@@ -11,8 +11,6 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;

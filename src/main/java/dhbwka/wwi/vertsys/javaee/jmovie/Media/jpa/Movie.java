@@ -9,32 +9,22 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 /**
  *
  * @author D070429
  */
 @Entity
-public class Movie extends Media implements Serializable {
+public class Movie extends Media implements Serializable, Playable {
 
     
     @NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")

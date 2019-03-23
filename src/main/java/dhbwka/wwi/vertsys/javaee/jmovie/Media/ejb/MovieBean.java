@@ -10,16 +10,10 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Movie;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
-import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+
 
 /**
  *
