@@ -13,6 +13,7 @@ import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,7 +25,7 @@ public class Serie extends Media implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(mappedBy="serie")
+    @OneToMany(mappedBy="serie",fetch = FetchType.LAZY)
     private List<Season> seasons;
     
     

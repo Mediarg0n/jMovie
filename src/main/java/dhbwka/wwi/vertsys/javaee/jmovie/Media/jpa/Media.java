@@ -58,16 +58,7 @@ public class Media implements Serializable {
     @NotNull
     private String description;
     
-    /*@NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")
-    private Date releaseDate;
     
-    @NotNull(message = "Die Länge des Films darf nicht leer sein.")
-    private int movieLength;
-
-    @NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
-    private int watchedUntil = 0;
-
-*/
     @Enumerated(EnumType.STRING)
     @NotNull
     private WatchStatus status = WatchStatus.NOT_WATCHED;
@@ -126,32 +117,7 @@ public class Media implements Serializable {
         this.description = description;
     }
 
-    /*
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public int getMovieLength() {
-        return movieLength;
-    }
-
-    public void setMovieLength(int movieLength) {
-        this.movieLength = movieLength;
-    }
     
-    
-    public int getWatchedUntil() {
-        return watchedUntil;
-    }
-
-    public void setWatchedUntil(int watchedUntil) {
-        this.watchedUntil = watchedUntil;
-    }
-    */
     public WatchStatus getStatus() {
         return status;
     }

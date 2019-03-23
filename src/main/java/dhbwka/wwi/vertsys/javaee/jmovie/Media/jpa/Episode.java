@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -56,6 +58,10 @@ public class Episode implements Serializable, Playable {
     @Lob
     @NotNull
     private String description;
+    
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private WatchStatus status = WatchStatus.NOT_WATCHED;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Episode(){
@@ -142,5 +148,13 @@ public class Episode implements Serializable, Playable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+     public WatchStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WatchStatus status) {
+        this.status = status;
     }
 }

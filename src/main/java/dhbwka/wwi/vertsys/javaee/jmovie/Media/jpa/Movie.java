@@ -34,30 +34,8 @@ import javax.validation.constraints.Size;
  * @author D070429
  */
 @Entity
-public class Movie implements Serializable {
+public class Movie extends Media implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "movie_ids")
-    @TableGenerator(name = "movie_ids", initialValue = 0, allocationSize = 50)
-    private long id;
-
-    @ManyToOne
-    @NotNull(message = "Die Film muss einem Benutzer zugeordnet werden.")
-    private User owner;
-
-    @ManyToMany
-    private List<Genere> genere;
-
-    @Column(length = 50)
-    @NotNull(message = "Der Titel darf nicht leer sein.")
-    @Size(min = 1, max = 30, message = "Der Titel muss zwischen ein und 30 Zeichen lang sein.")
-    private String title;
-
-    @Lob
-    @NotNull
-    private String description;
     
     @NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")
     private Date releaseDate;
@@ -79,10 +57,7 @@ public class Movie implements Serializable {
     }
 
     public Movie(User owner, List<Genere> genere, String title, String description, Date releaseDate, int movieLength) {
-        this.owner = owner;
-        this.genere = genere;
-        this.title = title;
-        this.description = description;
+        super(owner,genere,title,description);
         this.releaseDate = releaseDate;
         this.movieLength = movieLength;
 
@@ -90,46 +65,7 @@ public class Movie implements Serializable {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public List<Genere> getGenere() {
-        return genere;
-    }
-
-    public void setGenere(List<Genere> genere) {
-        this.genere = genere;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    
     public Date getReleaseDate() {
         return releaseDate;
     }
