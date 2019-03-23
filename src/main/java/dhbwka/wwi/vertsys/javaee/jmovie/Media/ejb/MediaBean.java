@@ -19,6 +19,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -79,11 +80,10 @@ public class MediaBean extends EntityBean<Media, Long> {
         }
         
         // WHERE m.genre = :genre
-        
-        if (genre != null) {
-            p = cb.and(p, cb.equal(from.get("genre"), genre));
+        /*if (genre != null) {
+            p = cb.and(p, cb.isMember(genre,from.get("genres")));
             query.where(p);
-        }
+        }*/
         
         // WHERE m.status = :status
         if (status != null) {

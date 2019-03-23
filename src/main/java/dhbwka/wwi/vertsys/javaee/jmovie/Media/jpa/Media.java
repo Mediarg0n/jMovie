@@ -46,7 +46,7 @@ public class Media implements Serializable {
     private User owner;
 
     @ManyToMany
-    private List<Genre> genre;
+    private List<Genre> genres;
 
     @Column(length = 50)
     @NotNull(message = "Der Titel darf nicht leer sein.")
@@ -71,11 +71,11 @@ public class Media implements Serializable {
     }
 
 
-    public Media(User owner, List<Genre> genre, String title, String description, Date releaseDate) {
+    public Media(User owner, List<Genre> genres, String title, String description, Date releaseDate) {
 
         this.owner = owner;
 
-        this.genre = genre;
+        this.genres = genres;
 
         this.title = title;
         this.description = description;
@@ -102,13 +102,13 @@ public class Media implements Serializable {
 
 
     public List<Genre> getGenres() {
-        return genre;
+        return genres;
     }
 
 
     public void setGenres(List<Genre> genre) {
 
-        this.genre = genre;
+        this.genres = genre;
     }
 
     public String getTitle() {
