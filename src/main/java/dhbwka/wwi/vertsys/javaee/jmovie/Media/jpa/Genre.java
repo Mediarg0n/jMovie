@@ -28,13 +28,13 @@ import javax.validation.constraints.Size;
  * @author D070429
  */
 @Entity
-public class Genere implements Serializable {
+public class Genre implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "genere_ids")
-    @TableGenerator(name = "genere_ids", initialValue = 0, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "genre_ids")
+    @TableGenerator(name = "genre_ids", initialValue = 0, allocationSize = 50)
     private long id;
 
     @Column(length = 30)
@@ -42,14 +42,14 @@ public class Genere implements Serializable {
     @Size(min = 3, max = 30, message = "Der Name muss zwischen drei und 30 Zeichen lang sein.")
     private String name;
 
-    @ManyToMany(mappedBy = "genere", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "genre", fetch = FetchType.LAZY)
     List<Media> medias = new ArrayList<>();
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Genere() {
+    public Genre() {
     }
 
-    public Genere(String name) {
+    public Genre(String name) {
         this.name = name;
     }
     //</editor-fold>

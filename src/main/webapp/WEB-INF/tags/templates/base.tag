@@ -55,7 +55,7 @@
                         <a href="<c:url value="/logout/"/>" class="icon-logout">Logout ${pageContext.request.userPrincipal.name}</a>
                     </div>
                     <div class="menuitem">
-                        <a href="<c:url value="/app/profil/"/>" class="icon-logout">Profil ${pageContext.request.userPrincipal.name}</a>
+                        <a href="<c:url value="/app/profil/"/>" class="icon-pencil">Profil ${pageContext.request.userPrincipal.name}</a>
                     </div>
                 </c:if>
             </div>

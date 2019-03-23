@@ -36,7 +36,7 @@ public class Movie extends Media implements Serializable, Playable {
     public Movie() {
     }
 
-    public Movie(User owner, List<Genere> genere, String title, String description, Date releaseDate, int movieLength) {
+    public Movie(User owner, List<Genre> genere, String title, String description, Date releaseDate, int movieLength) {
         super(owner,genere,title,description,releaseDate);
         this.movieLength = movieLength;
 

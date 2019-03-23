@@ -14,7 +14,7 @@ import dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,7 +32,7 @@ import javax.ejb.Stateless;
 public class MediaDashboardContent implements DashboardContentProvider {
     
     @EJB
-    private GenereBean genereBean;
+    private GenreBean genereBean;
 
     @EJB
     private MediaBean mediaBean;
@@ -52,9 +52,9 @@ public class MediaDashboardContent implements DashboardContentProvider {
         sections.add(section);
 
         // Anschließend je Kategorie einen weiteren Abschnitt erzeugen
-        List<Genere> generes = this.genereBean.findAllSorted();
+        List<Genre> generes = this.genereBean.findAllSorted();
 
-        for (Genere genere: generes) {
+        for (Genre genere: generes) {
             section = this.createSection(genere);
             sections.add(section);
         }
@@ -72,7 +72,7 @@ public class MediaDashboardContent implements DashboardContentProvider {
      * @param genere Genere-Kategorie, für die Kacheln erzeugt werden sollen
      * @return Neue Dashboard-Rubrik mit den Kacheln
      */
-    private DashboardSection createSection(Genere genere) {
+    private DashboardSection createSection(Genre genere) {
         // Neue Rubrik im Dashboard erzeugen
         DashboardSection section = new DashboardSection();
         String cssClass = "";
@@ -131,7 +131,7 @@ public class MediaDashboardContent implements DashboardContentProvider {
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Genere genere, WatchStatus status, String label, String cssClass, String icon) {
+    private DashboardTile createTile(Genre genere, WatchStatus status, String label, String cssClass, String icon) {
         int amount = mediaBean.search(null, genere, status).size();
         String href = "/app/tasks/list/";
 

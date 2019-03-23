@@ -39,7 +39,7 @@ public class Serie extends Media implements Serializable {
         this.seasons = seasons;
     }
 
-    public Serie(List<Season> seasons, User owner, List<Genere> genere, String title, String description,Date releaseDate) {
+    public Serie(List<Season> seasons, User owner, List<Genre> genere, String title, String description,Date releaseDate) {
         super(owner, genere, title, description,releaseDate);
         this.seasons = seasons;
     }

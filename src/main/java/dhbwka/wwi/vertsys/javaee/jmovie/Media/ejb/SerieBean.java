@@ -12,7 +12,7 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Serie;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -59,7 +59,7 @@ public class SerieBean extends EntityBean<Serie, Long> {
      * @param status Status (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Serie> search(String title, Genere genre, WatchStatus status) {
+    public List<Serie> search(String title, Genre genre, WatchStatus status) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         

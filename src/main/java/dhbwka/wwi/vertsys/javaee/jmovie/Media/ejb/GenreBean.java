@@ -11,7 +11,7 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -23,20 +23,20 @@ import javax.ejb.Stateless;
 
 @Stateless
 @RolesAllowed("app-user")
-public class GenereBean extends EntityBean<Genere, Long>{
+public class GenreBean extends EntityBean<Genre, Long>{
     
-     public GenereBean() {
-        super(Genere.class);
+     public GenreBean() {
+        super(Genre.class);
     }
      
      
      /**
-     * Auslesen aller Generes, alphabetisch sortiert.
+     * Auslesen aller Genres, alphabetisch sortiert.
      *
-     * @return Liste mit allen Generes
+     * @return Liste mit allen Genres
      */
-    public List<Genere> findAllSorted() {
-        return this.em.createQuery("SELECT c FROM Genere c ORDER BY c.name").getResultList();
+    public List<Genre> findAllSorted() {
+        return this.em.createQuery("SELECT c FROM Genre c ORDER BY c.name").getResultList();
     }
     
 }
