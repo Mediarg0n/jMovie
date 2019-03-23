@@ -9,12 +9,10 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Episode;
+
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Task;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -51,16 +49,14 @@ public class MediaBean extends EntityBean<Media, Long> {
         return em.find(Media.class, id);
     }
     
-    /**
-     * Suche nach Aufgaben anhand ihrer Bezeichnung, Kategorie und Status.
+   //TODO noch mehr Suchkriterien
+     /**
+     * Suche nach Medien anhand ihres Titels, Generes und Status. Sortiert nach Erscheinungsjahr.
      * 
-     * Anders als in der Vorlesung behandelt, wird die SELECT-Anfrage hier
-     * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
-     * 
-     * @param search In der Kurzbeschreibung enthaltener Text (optional)
-     * @param category Kategorie (optional)
+     * @param title Titel des Films (optional)
+     * @param genere Genere des Films (optional)
      * @param status Status (optional)
-     * @return Liste mit den gefundenen Aufgaben
+     * @return Liste mit den gefundenen Filmen
      */
     public List<Media> search(String title, Genere genre, WatchStatus status) {
         // Hilfsobjekt zum Bauen des Query

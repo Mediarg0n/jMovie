@@ -9,8 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.GenereBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.MovieBean;
+
 import dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardSection;
@@ -27,16 +26,16 @@ import javax.ejb.Stateless;
  */
 
 /**
- * EJB zur Definition der Dashboard-Kacheln für Filme.
+ * EJB zur Definition der Dashboard-Kacheln für Medien.
  */
-@Stateless(name = "movies")
-public class MovieDashboardContent implements DashboardContentProvider {
+@Stateless(name = "medias")
+public class MediaDashboardContent implements DashboardContentProvider {
     
     @EJB
     private GenereBean genereBean;
 
     @EJB
-    private MovieBean movieBean;
+    private MediaBean mediaBean;
     
     /**
      * Vom Dashboard aufgerufenen Methode, um die anzuzeigenden Rubriken und
@@ -62,12 +61,12 @@ public class MovieDashboardContent implements DashboardContentProvider {
     }
 
     /**
-     * Hilfsmethode, die für die übergebene Film-Genere eine neue Rubrik
+     * Hilfsmethode, die für die übergebene Media-Genere eine neue Rubrik
      * mit Kacheln im Dashboard erzeugt. Je Watchstatus wird eine Kachel
-     * erzeugt. Zusätzlich eine Kachel für alle Filme innerhalb des
+     * erzeugt. Zusätzlich eine Kachel für alle Medien innerhalb des
      * jeweiligen Generes.
      *
-     * Ist das Genere null, bedeutet dass, dass eine Rubrik für alle Filme
+     * Ist das Genere null, bedeutet dass, dass eine Rubrik für alle Medien
      * aus allen Generes erzeugt werden soll.
      *
      * @param genere Genere-Kategorie, für die Kacheln erzeugt werden sollen
@@ -133,7 +132,7 @@ public class MovieDashboardContent implements DashboardContentProvider {
      * @return
      */
     private DashboardTile createTile(Genere genere, WatchStatus status, String label, String cssClass, String icon) {
-        int amount = movieBean.search(null, genere, status).size();
+        int amount = mediaBean.search(null, genere, status).size();
         String href = "/app/tasks/list/";
 
         //URL Parameter für Genere wird gesetzt
