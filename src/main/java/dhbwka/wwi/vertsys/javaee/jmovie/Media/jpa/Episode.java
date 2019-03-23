@@ -26,7 +26,6 @@ import javax.validation.constraints.Size;
  * @author bpall
  */
 @Entity
-//@IdClass(EpisodenId.class)
 public class Episode implements Serializable, Playable {
     
     @Id
