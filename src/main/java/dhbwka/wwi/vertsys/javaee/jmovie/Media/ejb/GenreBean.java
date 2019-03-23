@@ -10,7 +10,6 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;

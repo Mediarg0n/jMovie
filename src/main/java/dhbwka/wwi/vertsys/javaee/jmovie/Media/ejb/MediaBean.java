@@ -51,10 +51,10 @@ public class MediaBean extends EntityBean<Media, Long> {
     
    //TODO noch mehr Suchkriterien
      /**
-     * Suche nach Medien anhand ihres Titels, Generes und Status. Sortiert nach Erscheinungsjahr.
+     * Suche nach Medien anhand ihres Titels, Genres und Status. Sortiert nach Erscheinungsjahr.
      * 
      * @param title Titel des Films (optional)
-     * @param genere Genere des Films (optional)
+     * @param genre Genre des Films (optional)
      * @param status Status (optional)
      * @return Liste mit den gefundenen Filmen
      */
@@ -79,6 +79,7 @@ public class MediaBean extends EntityBean<Media, Long> {
         }
         
         // WHERE m.genre = :genre
+        
         if (genre != null) {
             p = cb.and(p, cb.equal(from.get("genre"), genre));
             query.where(p);

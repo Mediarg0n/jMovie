@@ -70,9 +70,13 @@ public class Media implements Serializable {
     public Media() {
     }
 
-    public Media(User owner, List<Genre> genere, String title, String description, Date releaseDate) {
+
+    public Media(User owner, List<Genre> genre, String title, String description, Date releaseDate) {
+
         this.owner = owner;
-        this.genre = genere;
+
+        this.genre = genre;
+
         this.title = title;
         this.description = description;
         this.releaseDate = releaseDate;
@@ -96,11 +100,14 @@ public class Media implements Serializable {
         this.owner = owner;
     }
 
-    public List<Genre> getGenre() {
+
+    public List<Genre> getGenres() {
         return genre;
     }
 
-    public void setGenre(List<Genre> genre) {
+
+    public void setGenres(List<Genre> genre) {
+
         this.genre = genre;
     }
 

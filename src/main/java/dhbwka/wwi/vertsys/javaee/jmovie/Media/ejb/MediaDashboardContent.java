@@ -32,7 +32,8 @@ import javax.ejb.Stateless;
 public class MediaDashboardContent implements DashboardContentProvider {
     
     @EJB
-    private GenreBean genereBean;
+    private GenreBean genreBean;
+
 
     @EJB
     private MediaBean mediaBean;
@@ -52,40 +53,45 @@ public class MediaDashboardContent implements DashboardContentProvider {
         sections.add(section);
 
         // Anschließend je Kategorie einen weiteren Abschnitt erzeugen
-        List<Genre> generes = this.genereBean.findAllSorted();
 
-        for (Genre genere: generes) {
-            section = this.createSection(genere);
+        List<Genre> genres = this.genreBean.findAllSorted();
+
+
+
+        for (Genre genre: genres) {
+            section = this.createSection(genre);
             sections.add(section);
         }
     }
 
     /**
-     * Hilfsmethode, die für die übergebene Media-Genere eine neue Rubrik
+     * Hilfsmethode, die für die übergebene Media-Genre eine neue Rubrik
      * mit Kacheln im Dashboard erzeugt. Je Watchstatus wird eine Kachel
      * erzeugt. Zusätzlich eine Kachel für alle Medien innerhalb des
-     * jeweiligen Generes.
+     * jeweiligen genres.
      *
-     * Ist das Genere null, bedeutet dass, dass eine Rubrik für alle Medien
-     * aus allen Generes erzeugt werden soll.
+     * Ist das Genre null, bedeutet dass, dass eine Rubrik für alle Medien
+     * aus allen Genres erzeugt werden soll.
      *
-     * @param genere Genere-Kategorie, für die Kacheln erzeugt werden sollen
+     * @param genre Genre-Kategorie, für die Kacheln erzeugt werden sollen
      * @return Neue Dashboard-Rubrik mit den Kacheln
      */
-    private DashboardSection createSection(Genre genere) {
+
+    private DashboardSection createSection(Genre genre) {
+
         // Neue Rubrik im Dashboard erzeugen
         DashboardSection section = new DashboardSection();
         String cssClass = "";
 
-        if (genere != null) {
-            section.setLabel(genere.getName());
+        if (genre != null) {
+            section.setLabel(genre.getName());
         } else {
-            section.setLabel("Alle Generes");
+            section.setLabel("Alle Genres");
             cssClass = "overview";
         }
 
         // Eine Kachel für alle Aufgaben in dieser Rubrik erzeugen
-        DashboardTile tile = this.createTile(genere, null, "Alle", cssClass + " status-all", "calendar");//???????????????????????????
+        DashboardTile tile = this.createTile(genre, null, "Alle", cssClass + " status-all", "calendar");//???????????????????????????
         section.getTiles().add(tile);
 
         // Ja Aufgabenstatus eine weitere Kachel erzeugen
@@ -111,7 +117,7 @@ public class MediaDashboardContent implements DashboardContentProvider {
                 
             }
 
-            tile = this.createTile(genere, status, status.getLabel(), cssClass1, icon);
+            tile = this.createTile(genre, status, status.getLabel(), cssClass1, icon);
             section.getTiles().add(tile);
         }
 
@@ -124,20 +130,21 @@ public class MediaDashboardContent implements DashboardContentProvider {
      * Methode werden auch die in der Kachel angezeigte Anzahl sowie der Link,
      * auf den die Kachel zeigt, ermittelt.
      *
-     * @param genere
+     * @param genre
      * @param status
      * @param label
      * @param cssClass
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Genre genere, WatchStatus status, String label, String cssClass, String icon) {
-        int amount = mediaBean.search(null, genere, status).size();
+
+    private DashboardTile createTile(Genre genre, WatchStatus status, String label, String cssClass, String icon) {
+        int amount = mediaBean.search(null, genre, status).size();
         String href = "/app/tasks/list/";
 
-        //URL Parameter für Genere wird gesetzt
-        if (genere != null) {
-            href = WebUtils.addQueryParameter(href, "search_category", "" + genere.getId());
+        //URL Parameter für Genre wird gesetzt
+        if (genre != null) {
+            href = WebUtils.addQueryParameter(href, "search_genre", "" + genre.getId());
         }
 
         //URL Parameter für Status wird gesetzt

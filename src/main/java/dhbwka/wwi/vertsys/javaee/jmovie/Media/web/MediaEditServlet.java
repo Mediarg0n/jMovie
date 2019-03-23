@@ -79,7 +79,7 @@ public class MediaEditServlet extends HttpServlet{
             try {
                 List<Genre> genres = new ArrayList<Genre>();
                 genres.add(this.genreBean.findById(Long.parseLong(mediaGenre)));
-                media.setGenre(genres);
+                media.setGenres(genres);
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
@@ -121,9 +121,9 @@ public class MediaEditServlet extends HttpServlet{
             media.getOwner().getUsername()
         });
 
-        if (media.getGenre()!= null) {
+        if (media.getGenres()!= null) {
             values.put("media_category", new String[]{
-                "" + media.getGenre().get(0).getId()
+                "" + media.getGenres().get(0).getId()
             });
         }
 
