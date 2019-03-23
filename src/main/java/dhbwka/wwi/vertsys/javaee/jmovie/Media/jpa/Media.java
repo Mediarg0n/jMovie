@@ -10,8 +10,6 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Genere;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.WatchStatus;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;

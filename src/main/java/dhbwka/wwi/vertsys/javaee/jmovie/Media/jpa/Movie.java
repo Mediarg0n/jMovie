@@ -7,8 +7,9 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;

@@ -7,14 +7,16 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jmovie.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.GenereBean;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.MovieBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.jmovie.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Genere;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.WatchStatus;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

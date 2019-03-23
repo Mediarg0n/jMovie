@@ -7,11 +7,11 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jmovie.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Genere;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genere;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;

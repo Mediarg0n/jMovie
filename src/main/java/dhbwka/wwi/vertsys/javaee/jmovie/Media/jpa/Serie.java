@@ -10,7 +10,6 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.jmovie.tasks.jpa.Genere;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
