@@ -24,14 +24,15 @@ import javax.validation.constraints.Size;
  * @author bpall
  */
 @Entity
-@IdClass(SeasonId.class)
+//@IdClass(SeasonId.class)
 public class Season implements Serializable {
     
     @Id
     @Size(min = 1, max = 50, message = "Eine Serien kann höchstens 50 Episoden haben.")
     private int nr;
     
-    @Id
+    
+    //@Id
     @ManyToOne
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Serie serie;
@@ -39,18 +40,21 @@ public class Season implements Serializable {
     
     @OneToMany(mappedBy = "season")
     private List<Episode> episodes;
+   
 
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Season(){
         
     }
-    
+
     public Season(int nr, Serie serie, List<Episode> episodes) {
         this.nr = nr;
         this.serie = serie;
         this.episodes = episodes;
     }
+    
+    
     
     //</editor-fold>
 
@@ -59,7 +63,7 @@ public class Season implements Serializable {
     public int getNr() {
         return nr;
     }
-
+ 
     public void setNr(int nr) {
         this.nr = nr;
     }
@@ -75,7 +79,7 @@ public class Season implements Serializable {
     public List<Episode> getEpisodes() {
         return episodes;
     }
-
+    
     public void setEpisodes(List<Episode> episodes) {
         this.episodes = episodes;
     }

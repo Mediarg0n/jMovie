@@ -25,14 +25,14 @@ import javax.validation.constraints.Size;
  * @author bpall
  */
 @Entity
-@IdClass(EpisodenId.class)
-class Episode implements Serializable, Playable {
+//@IdClass(EpisodenId.class)
+public class Episode implements Serializable, Playable {
     
     @Id
     @Size(min = 1, max = 50, message = "Eine Serien Staffel kann höchstens 50 Episoden haben.")
     private int nr;
     
-    @Id
+  //  @Id
     @ManyToOne
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Season season;
@@ -93,53 +93,53 @@ class Episode implements Serializable, Playable {
         this.season = season;
     }
     
-    @Override
+    //@Override
     public Date getReleaseDate() {
         return releaseDate;
     }
 
-    @Override
+    //@Override
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    @Override
+    //@Override
     public int getMovieLength() {
         return movieLength;
     }
 
-    @Override
+    //@Override
     public void setMovieLength(int movieLength) {
         this.movieLength = movieLength;
     }
     
     
-    @Override
+    //@Override
     public int getWatchedUntil() {
         return watchedUntil;
     }
 
-    @Override
+    //@Override
     public void setWatchedUntil(int watchedUntil) {
         this.watchedUntil = watchedUntil;
     }
 
-    @Override
+    //@Override
     public String getTitle() {
         return title;
      }
 
-    @Override
+    //@Override
     public void setTitle(String title) {
        this.title = title;
     }
 
-    @Override
+    //@Override
     public String getDescription() {
         return description;
      }
 
-    @Override
+    //@Override
     public void setDescription(String description) {
         this.description = description;
     }

@@ -19,15 +19,16 @@ import java.util.Objects;
  * @author bpall
  */
 public class SeasonId implements Serializable {
-    private int nr;
-    private Serie serie;
+    private int nr=0;
+    private Serie serie=null;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public SeasonId(){
-        
+        super();
     }
     
     public SeasonId(int nr, Serie serie) {
+        super();
         this.nr = nr;
         this.serie = serie;
     }
