@@ -11,6 +11,7 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,6 +57,9 @@ public class Media implements Serializable {
     @NotNull
     private String description;
     
+    @NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")
+    private Date releaseDate;
+    
     
     @Enumerated(EnumType.STRING)
     @NotNull
@@ -66,11 +70,12 @@ public class Media implements Serializable {
     public Media() {
     }
 
-    public Media(User owner, List<Genere> genere, String title, String description) {
+    public Media(User owner, List<Genere> genere, String title, String description, Date releaseDate) {
         this.owner = owner;
         this.genere = genere;
         this.title = title;
         this.description = description;
+        this.releaseDate = releaseDate;
     }
     //</editor-fold>
 
@@ -113,6 +118,14 @@ public class Media implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     

@@ -14,8 +14,6 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 
@@ -27,28 +25,19 @@ import javax.validation.constraints.NotNull;
 public class Movie extends Media implements Serializable, Playable {
 
     
-    @NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")
-    private Date releaseDate;
-    
     @NotNull(message = "Die Länge des Films darf nicht leer sein.")
     private int movieLength;
 
     @NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
     private int watchedUntil = 0;
 
-
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private WatchStatus status = WatchStatus.NOT_WATCHED;
-    
-    
+        
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Movie() {
     }
 
     public Movie(User owner, List<Genere> genere, String title, String description, Date releaseDate, int movieLength) {
-        super(owner,genere,title,description);
-        this.releaseDate = releaseDate;
+        super(owner,genere,title,description,releaseDate);
         this.movieLength = movieLength;
 
     }
@@ -56,38 +45,29 @@ public class Movie extends Media implements Serializable, Playable {
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
     
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
+    
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
+    @Override
     public int getMovieLength() {
         return movieLength;
     }
 
+    @Override
     public void setMovieLength(int movieLength) {
         this.movieLength = movieLength;
     }
     
     
+    @Override
     public int getWatchedUntil() {
         return watchedUntil;
     }
 
+    @Override
     public void setWatchedUntil(int watchedUntil) {
         this.watchedUntil = watchedUntil;
     }
     
-    public WatchStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(WatchStatus status) {
-        this.status = status;
-    }
     //</editor-fold>
     
 }
