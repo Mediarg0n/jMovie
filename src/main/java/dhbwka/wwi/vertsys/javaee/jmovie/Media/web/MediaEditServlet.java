@@ -67,7 +67,7 @@ public class MediaEditServlet extends HttpServlet{
     }
     
     public void saveMedia(HttpServletRequest request, Media media, List<String> errors){
-        String mediaGenre = request.getParameter("media_genre");
+        String[] mediaGenres = request.getParameterValues("media_genre");
         String mediaReleaseDate = request.getParameter("media_release_date");
         String mediaStatus = request.getParameter("media_status");
         String mediaTitle = request.getParameter("media_title");
@@ -75,10 +75,11 @@ public class MediaEditServlet extends HttpServlet{
 
         
 
-        if (mediaGenre != null && !mediaGenre.trim().isEmpty()) {
+        if (mediaGenres != null && mediaGenres.length>0) {
             try {
                 List<Genre> genres = new ArrayList<Genre>();
-                genres.add(this.genreBean.findById(Long.parseLong(mediaGenre)));
+                for(String mediaGenre: mediaGenres)
+                    genres.add(this.genreBean.findById(Long.parseLong(mediaGenre)));
                 media.setGenres(genres);
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
