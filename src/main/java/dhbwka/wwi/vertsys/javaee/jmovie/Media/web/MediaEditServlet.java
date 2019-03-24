@@ -117,6 +117,10 @@ public class MediaEditServlet extends HttpServlet{
     public FormValues createMediaForm(Media media) {
         Map<String, String[]> values = new HashMap<>();
 
+        values.put("media_id", new String[]{
+            String.valueOf(media.getId())
+        });
+        
         values.put("media_owner", new String[]{
             media.getOwner().getUsername()
         });

@@ -19,6 +19,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -33,7 +35,8 @@ public class Episode implements Serializable, Playable {
     @GeneratedValue
     private long id;
     
-    @Size(min = 1, max = 50, message = "Eine Serien Staffel kann höchstens 50 Episoden haben.")
+    @Min(value =1, message = "Die Episodennummer muss zwischen 1 und 50 liegen")
+    @Max(value = 50, message = "Die Episodennummer muss zwischen 1 und 50 liegen")
     private int nr;
     
     @ManyToOne

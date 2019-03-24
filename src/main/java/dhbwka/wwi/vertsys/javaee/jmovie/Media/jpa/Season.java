@@ -21,6 +21,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,6 +32,10 @@ import javax.validation.constraints.Size;
  *
  * @author bpall
  */
+@Table(
+    uniqueConstraints=
+        @UniqueConstraint(columnNames={"nr", "serie_id"})
+)
 @Entity
 //@IdClass(SeasonId.class)
 public class Season implements Serializable {
@@ -37,17 +45,19 @@ public class Season implements Serializable {
     @GeneratedValue
     private long id;
     
-    @Size(min = 1, max = 50, message = "Eine Serien kann höchstens 50 Episoden haben.")
+    @Min(value =1, message = "Die Staffelnummer muss zwischen 1 und 50 liegen")
+    @Max(value = 50, message = "Die Staffelnummer muss zwischen 1 und 50 liegen")
     private int nr;
     
     @ManyToOne
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Serie serie;
     
+   /* Season hat keinen Titel nur eine Nummer "Staffel 3" etc.
     @Column(length = 50)
     @NotNull(message = "Der Titel darf nicht leer sein.")
     @Size(min = 1, max = 30, message = "Der Titel muss zwischen ein und 30 Zeichen lang sein.")
-    private String title;
+    private String title;*/
     
     @NotNull(message = "Das Erscheinungsdatum der Episode darf nicht leer sein.")
     private Date releaseDate;
@@ -60,21 +70,28 @@ public class Season implements Serializable {
     
     @Enumerated(EnumType.STRING)
     @NotNull
-    private WatchStatus status = WatchStatus.NOT_WATCHED;
+    private WatchStatus status;
    
 
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Season(){
-        
+        this.status = WatchStatus.NOT_WATCHED;
     }
 
-    public Season(long id, int nr, Serie serie, List<Episode> episodes) {
+    public Season(long id, int nr, Serie serie, Date releaseDate, List<Episode> episodes, WatchStatus status) {
         this.id = id;
         this.nr = nr;
         this.serie = serie;
+        this.releaseDate = releaseDate;
         this.episodes = episodes;
+        this.status = status;
+        if(status==null){
+            this.status = WatchStatus.NOT_WATCHED;
+        }
     }
+
+   
 
     
     
@@ -108,6 +125,7 @@ public class Season implements Serializable {
         this.serie = serie;
     }
     
+    /*
      public String getTitle() {
         return title;
     }
@@ -115,6 +133,7 @@ public class Season implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+*/
 
     public Date getReleaseDate() {
         return releaseDate;
