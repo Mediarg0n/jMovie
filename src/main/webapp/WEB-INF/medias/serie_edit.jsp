@@ -22,7 +22,14 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
+        
         <link rel="stylesheet" href="<c:url value="/css/media_edit.css"/>" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+        
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -49,8 +56,9 @@
 
                 <label for="media_genre">Genre:</label>
                 <div class="side-by-side">
-                    <select name="media_genre">
-                        <option value="">Kein Genre</option>
+                    
+                    <select   class="selectpicker" multiple data-live-search="false" name="media_genre">
+                        <!--<option value="">Kein Genre</option>-->
 
                         <c:forEach items="${genres}" var="genre">
                             <option value="${genre.id}" ${media_form.values["media_genre"][0] == genre.id.toString() ? 'selected' : ''}>
