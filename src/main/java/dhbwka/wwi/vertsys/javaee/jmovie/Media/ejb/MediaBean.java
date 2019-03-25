@@ -80,10 +80,10 @@ public class MediaBean extends EntityBean<Media, Long> {
         }
         
         // WHERE m.genre = :genre
-        /*if (genre != null) {
+        if (genre != null) {
             p = cb.and(p, cb.isMember(genre,from.get("genres")));
             query.where(p);
-        }*/
+        }
         
         // WHERE m.status = :status
         if (status != null) {
