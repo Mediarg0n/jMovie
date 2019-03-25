@@ -57,6 +57,8 @@ public class SerieEditServlet extends MediaEditServlet {
 
         Serie serie = this.getRequestedSerie(request);
         super.doGet(request, serie);
+        request.setAttribute("seasons", serie.getSeasons());
+
         
         
         // Anfrage an die JSP weiterleiten

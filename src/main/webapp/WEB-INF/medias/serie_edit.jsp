@@ -45,11 +45,6 @@
     <jsp:attribute name="content">
         <form method="post" class="stacked">
             <div class="column">
-                <c:if test="${edit}">
-                    <div class="menuitem">
-                        <a href="<c:url value="/app/medias/season/new${media_form.values['media_id'][0]}/"/>">Staffel hinzufügen</a>
-                    </div>
-                </c:if>
                 <%-- CSRF-Token --%>
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
@@ -142,5 +137,50 @@
                 </ul>
             </c:if>
         </form>
+            
+            <%-- Seasons --%>
+            <label>Staffeln</label>
+            <c:choose>
+                <c:when test="${empty seasons}">
+                    <p>
+                        Es wurden keine Seasons gefunden. 🐈
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils"/>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Status</th>
+                                <th>Veröffentlicht am</th>
+                            </tr>
+                        </thead>
+                        <c:forEach items="${seasons}" var="season">
+                            <tr>
+                                <td>
+                                    <!-- Todo Unterscheidung ob Movie oder Serie  -->
+                                    <a href="<c:url value="/app/medias/season/${season.id}/"/>">
+                                        Staffel <c:out value="${season.nr}"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <c:out value="${season.status.label}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${utils.formatDate(season.releaseDate)}"/>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:otherwise>
+            </c:choose>
+            
+                <c:if test="${edit}">
+                    <div class="menuitem">
+                        <a href="<c:url value="/app/medias/season/new${media_form.values['media_id'][0]}/"/>">Staffel hinzufügen</a>
+                    </div>
+                </c:if>
     </jsp:attribute>
 </template:base>

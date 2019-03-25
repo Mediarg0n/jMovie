@@ -26,7 +26,7 @@ public class Serie extends Media implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(mappedBy="serie",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="serie",fetch = FetchType.EAGER)
     private List<Season> seasons;
     
     

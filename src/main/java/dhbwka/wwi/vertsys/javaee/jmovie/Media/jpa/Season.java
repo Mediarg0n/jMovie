@@ -49,7 +49,7 @@ public class Season implements Serializable {
     @Max(value = 50, message = "Die Staffelnummer muss zwischen 1 und 50 liegen")
     private int nr;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Serie serie;
     

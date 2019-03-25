@@ -154,7 +154,7 @@ public class SeasonEditServlet extends MediaEditServlet {
         // Weiter zur nächsten Seite
         if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
-            response.sendRedirect(WebUtils.appUrl(request, "/app/medias/list/"));
+            response.sendRedirect(WebUtils.appUrl(request, "/app/medias/serie/"+season.getSerie().getId()));
         } else {
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
