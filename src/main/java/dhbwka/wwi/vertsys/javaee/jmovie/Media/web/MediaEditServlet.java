@@ -69,7 +69,7 @@ public class MediaEditServlet extends HttpServlet{
     }
     
     public void saveMedia(HttpServletRequest request, Media media, List<String> errors){
-        String[] mediaGenres = request.getParameterValues("media_genre");
+        String[] mediaGenres = request.getParameterValues("media_genres");
         String mediaReleaseDate = request.getParameter("media_release_date");
         String mediaStatus = request.getParameter("media_status");
         String mediaTitle = request.getParameter("media_title");
@@ -130,9 +130,13 @@ public class MediaEditServlet extends HttpServlet{
         });
 
         if (media.getGenres()!= null) {
-            values.put("media_category", new String[]{
-                "" + media.getGenres().get(0).getId()
-            });
+            List<Genre>genres = media.getGenres();
+            String[] genreIds = new String[genres.size()];
+            for(int i=0;i<genreIds.length;i++){
+                genreIds[i] = ""+genres.get(i).getId();
+            }
+                  
+            values.put("media_genres", genreIds);
         }
 
         values.put("media_release_date", new String[]{
