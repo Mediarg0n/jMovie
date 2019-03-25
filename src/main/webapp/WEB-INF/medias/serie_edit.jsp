@@ -59,14 +59,20 @@
                     <input type="text" name="media_owner" value="${media_form.values["media_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="media_genre">Genre:</label>
+                <label for="media_genres">Genre:</label>
                 <div class="side-by-side">
                     
-                    <select   class="selectpicker" multiple data-live-search="false" name="media_genre">
+                    <select   class="selectpicker" multiple data-live-search="false" name="media_genres">
                         <!--<option value="">Kein Genre</option>-->
-
+                            
                         <c:forEach items="${genres}" var="genre">
-                            <option value="${genre.id}" ${media_form.values["media_genre"][0] == status ? 'selected' : ''}>
+                            <c:set var="contains" value="false"/>
+                            <c:forEach items="${media_form.values['media_genres']}" var="m_genre">
+                                <c:if test="${m_genre eq genre.id.toString()}">
+                                    <c:set var="contains" value="true" />
+                                </c:if>
+                            </c:forEach>
+                            <option value="${genre.id}" ${contains? 'selected' : ''}>
                                 <c:out value="${genre.name}" />
                             </option>
                         </c:forEach>
@@ -78,7 +84,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="media_release_date" value="${media_form.values["media_relesase_date"][0]}">
+                    <input type="text" name="media_release_date" value="${media_form.values["media_release_date"][0]}">
                     
                 </div>
 
