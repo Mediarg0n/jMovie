@@ -52,7 +52,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="date" name="season_release_date" value="${season_form.values["season_relesase_date"][0]}">
+                    <input type="date" name="season_release_date" value="${season_form.values["season_release_date"][0]}">
                     
                 </div>
 

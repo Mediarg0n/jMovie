@@ -23,6 +23,7 @@ import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.ValidationBean;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -251,7 +252,7 @@ public class SeasonEditServlet extends MediaEditServlet {
         
 
         values.put("season_release_date", new String[]{
-            WebUtils.formatDate(season.getReleaseDate())
+            season.getReleaseDate().toString()
         });
 
 
