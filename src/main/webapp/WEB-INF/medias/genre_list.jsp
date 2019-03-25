@@ -16,7 +16,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/category_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/genre_list.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -25,7 +25,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/medias/list/"/>">Liste</a>
         </div>
     </jsp:attribute>
 

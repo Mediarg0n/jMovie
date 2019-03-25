@@ -140,7 +140,7 @@ public class MediaDashboardContent implements DashboardContentProvider {
 
     private DashboardTile createTile(Genre genre, WatchStatus status, String label, String cssClass, String icon) {
         int amount = mediaBean.search(null, genre, status).size();
-        String href = "/app/tasks/list/";
+        String href = "/app/medias/list/";
 
         //URL Parameter für Genre wird gesetzt
         if (genre != null) {

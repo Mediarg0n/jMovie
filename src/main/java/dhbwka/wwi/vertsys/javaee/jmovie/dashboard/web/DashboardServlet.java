@@ -29,7 +29,7 @@ public class DashboardServlet extends HttpServlet {
 
     // Kacheln für Aufgaben
     @EJB(beanName = "medias")
-    DashboardContentProvider taskContent;
+    DashboardContentProvider mediaContent;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +39,7 @@ public class DashboardServlet extends HttpServlet {
         List<DashboardSection> sections = new ArrayList<>();
         request.setAttribute("sections", sections);
         
-        taskContent.createDashboardContent(sections);
+        mediaContent.createDashboardContent(sections);
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);
