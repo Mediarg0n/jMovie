@@ -23,6 +23,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +59,8 @@ public class MediaEditServlet extends HttpServlet{
 
         
         request.setAttribute("edit", media.getId() != 0);
-                                
+                      
+        
         if (session.getAttribute("media_form") == null) {
             // Keine Formulardaten mit fehlerhaften Daten in der Session,
             // daher Formulardaten aus dem Datenbankobjekt übernehmen
