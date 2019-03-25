@@ -95,7 +95,6 @@
                                 <c:forEach items="${media.genres}" var="genre">
                                     <c:out value="${genre.name}"/>
                                 </c:forEach>
-                                
                             </td>
                             <td>
                                 <c:out value="${media.owner.username}"/>

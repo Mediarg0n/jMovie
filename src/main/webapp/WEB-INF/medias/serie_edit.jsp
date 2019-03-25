@@ -47,7 +47,7 @@
             <div class="column">
                 <c:if test="${edit}">
                     <div class="menuitem">
-                        <a href="<c:url value="/app/medias/season/new${media_form.values['media_id'][0]}/"/>">Steffel hinzufügen</a>
+                        <a href="<c:url value="/app/medias/season/new${media_form.values['media_id'][0]}/"/>">Staffel hinzufügen</a>
                     </div>
                 </c:if>
                 <%-- CSRF-Token --%>
