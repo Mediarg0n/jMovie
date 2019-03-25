@@ -92,9 +92,15 @@
                                 </a>
                             </td>
                             <td>
-                                <c:forEach items="${media.genres}" var="genre">
-                                    <c:out value="${genre.name}"/>
-                                </c:forEach>
+                              
+                                <c:out value="${media.genres[0].name}"/>
+                                
+                                <c:if test="${fn:length(media.genres) > 1}">
+                                    <c:forEach items="${media.genres}" var="genre" begin="1">
+                                       <c:out value=", ${genre.name}"/>
+                                    </c:forEach> 
+                                </c:if>
+                            
                             </td>
                             <td>
                                 <c:out value="${media.owner.username}"/>
