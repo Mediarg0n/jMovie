@@ -58,6 +58,7 @@ public class SeasonEditServlet extends MediaEditServlet {
 
         Season season = this.getRequestedSeason(request);
         request.setAttribute("statuses", WatchStatus.values());
+        request.setAttribute("episodes", season.getEpisodes());
 
         // Zu bearbeitende Serie einlesen
         HttpSession session = request.getSession();
@@ -91,10 +92,10 @@ public class SeasonEditServlet extends MediaEditServlet {
 
         switch (action) {
             case "save":
-                this.saveSerie(request, response);
+                this.saveSeason(request, response);
                 break;
             case "delete":
-                this.deleteSerie(request, response);
+                this.deleteSeason(request, response);
                 break;
         }
     }
@@ -107,7 +108,7 @@ public class SeasonEditServlet extends MediaEditServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void saveSerie(HttpServletRequest request, HttpServletResponse response)
+    private void saveSeason(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Formulareingaben prüfen
@@ -177,7 +178,7 @@ public class SeasonEditServlet extends MediaEditServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void deleteSerie(HttpServletRequest request, HttpServletResponse response)
+    private void deleteSeason(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Datensatz löschen
@@ -238,9 +239,10 @@ public class SeasonEditServlet extends MediaEditServlet {
     private FormValues createSeasonForm(Season season) {
         Map<String, String[]> values = new HashMap<>();
 
-            Serie s = season.getSerie();
-            String t = s.getTitle();
-            System.out.println(s+" "+ t);
+        values.put("season_id", new String[]{
+            ""+season.getId()
+        });   
+        
         values.put("season_serie", new String[]{
             season.getSerie().getTitle()
         });

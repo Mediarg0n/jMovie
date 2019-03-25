@@ -63,7 +63,7 @@ public class Season implements Serializable {
     private Date releaseDate;
     
     
-    @OneToMany(mappedBy = "season",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "season",fetch = FetchType.EAGER)
     private List<Episode> episodes;
     
     

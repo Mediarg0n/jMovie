@@ -15,10 +15,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -28,8 +31,12 @@ import javax.validation.constraints.Size;
  *
  * @author bpall
  */
+@Table(
+    uniqueConstraints=
+        @UniqueConstraint(columnNames={"nr", "season_id"})
+)
 @Entity
-public class Episode implements Serializable, Playable {
+public class Episode implements Serializable {
     
     @Id
     @GeneratedValue
@@ -39,7 +46,7 @@ public class Episode implements Serializable, Playable {
     @Max(value = 50, message = "Die Episodennummer muss zwischen 1 und 50 liegen")
     private int nr;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Season season;
     
@@ -51,14 +58,15 @@ public class Episode implements Serializable, Playable {
     @NotNull(message = "Das Erscheinungsdatum der Episode darf nicht leer sein.")
     private Date releaseDate;
     
-    @NotNull(message = "Die Länge des Episode darf nicht leer sein.")
-    private int movieLength;
+    @Min(value =0, message = "Die Episode kann nicht negativ sein")
+    //@NotNull(message = "Die Länge des Episode darf nicht leer sein.")
+    private int length;
 
-    @NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
-    private int watchedUntil = 0;
+    //@NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
+    //private int watchedUntil = 0;
 
     @Lob
-    @NotNull
+    //@NotNull
     private String description;
     
     @Enumerated(EnumType.STRING)
@@ -76,7 +84,7 @@ public class Episode implements Serializable, Playable {
         this.season = season;
         this.title = title;
         this.releaseDate = releaseDate;
-        this.movieLength = movieLength;
+        this.length = movieLength;
         this.description = description;
     }
     
@@ -128,22 +136,21 @@ public class Episode implements Serializable, Playable {
         this.releaseDate = releaseDate;
     }
 
-    public int getMovieLength() {
-        return movieLength;
+    public int geLength() {
+        return length;
     }
 
-    public void setMovieLength(int movieLength) {
-        this.movieLength = movieLength;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    public int getWatchedUntil() {
+   /* public int getWatchedUntil() {
         return watchedUntil;
     }
 
     public void setWatchedUntil(int watchedUntil) {
         this.watchedUntil = watchedUntil;
-    }
-
+*/
     public String getDescription() {
         return description;
     }

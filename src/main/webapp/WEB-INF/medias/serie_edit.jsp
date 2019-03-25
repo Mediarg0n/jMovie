@@ -136,9 +136,8 @@
                     </c:forEach>
                 </ul>
             </c:if>
-        </form>
             
-            <%-- Seasons --%>
+             <%-- Seasons --%>
             <label>Staffeln</label>
             <c:choose>
                 <c:when test="${empty seasons}">
@@ -182,5 +181,8 @@
                         <a href="<c:url value="/app/medias/season/new${media_form.values['media_id'][0]}/"/>">Staffel hinzufügen</a>
                     </div>
                 </c:if>
+        </form>
+            
+           
     </jsp:attribute>
 </template:base>

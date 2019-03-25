@@ -101,6 +101,53 @@
                     </c:forEach>
                 </ul>
             </c:if>
+            
+            <%-- Episoden --%>
+            <label>Episoden</label>
+            <c:choose>
+                <c:when test="${empty episodes}">
+                    <p>
+                        Es wurden keine Episode gefunden. 🐈
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils"/>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Titel</th>
+                                
+                                <th>Status</th>
+                                <th>Veröffentlicht am</th>
+                            </tr>
+                        </thead>
+                        <c:forEach items="${episodes}" var="episode">
+                            <tr>
+                                <td>
+                                    <!-- Todo Unterscheidung ob Movie oder Serie  -->
+                                    <a href="<c:url value="/app/medias/episode/${episode.id}/"/>">
+                                        <c:out value="${episode.nr}"/>. <c:out value="${episode.title}"/>
+                                    </a>
+                                </td>
+                                
+                                <td>
+                                    <c:out value="${episode.status.label}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${utils.formatDate(episode.releaseDate)}"/>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:otherwise>
+            </c:choose>
+            
+                <c:if test="${edit}">
+                    <div class="menuitem">
+                        <a href="<c:url value="/app/medias/episode/new${season_form.values['season_id'][0]}/"/>">Episode hinzufügen</a>
+                    </div>
+                </c:if>
         </form>
     </jsp:attribute>
 </template:base>
