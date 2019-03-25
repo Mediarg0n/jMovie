@@ -109,13 +109,14 @@ public class MediaEditServlet extends HttpServlet{
     
     /**
      * Neues FormValues-Objekt erzeugen und mit den Daten eines aus der
-     * Datenbank eingelesenen Datensatzes füllen. Dadurch müssen in der JSP
-     * keine hässlichen Fallunterscheidungen gemacht werden, ob die Werte im
-     * Formular aus der Entity oder aus einer vorherigen Formulareingabe
-     * stammen.
+     * Datenbank eingelesenen Datensatzes füllen.Dadurch müssen in der JSP
+ keine hässlichen Fallunterscheidungen gemacht werden, ob die Werte im
+ Formular aus der Entity oder aus einer vorherigen Formulareingabe
+ stammen.
      *
      * @param media Die zu bearbeitende Medium
      * media Neues, gefülltes FormValues-Objekt
+     * @return FormValues
      */
     public FormValues createMediaForm(Media media) {
         Map<String, String[]> values = new HashMap<>();
