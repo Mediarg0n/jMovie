@@ -76,6 +76,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Typ</th>
                             <th>Title</th>
                             <th>Genre</th>
                             <th>Eigentümer</th>
@@ -85,13 +86,31 @@
                     </thead>
                     <c:forEach items="${medias}" var="media">
                         <tr>
+                            
+                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Movie'}">
+                            <td> 
+                                <c:out value="Film"/>
+                            </td>
+                            
                             <td>
-                                <!-- Todo Unterscheidung ob Movie oder Serie  -->
-                                
+                                <a href="<c:url value="/app/medias/movie/${media.id}/"/>">
+                                    <c:out value="${media.title}"/>
+                                </a> 
+                            </td>
+                        </c:if>
+                            
+                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Serie'}">
+                            <td>
+                                <c:out value="Serie"/>
+                            </td>
+                            
+                            <td>
                                 <a href="<c:url value="/app/medias/serie/${media.id}/"/>">
                                     <c:out value="${media.title}"/>
                                 </a>
                             </td>
+                        </c:if>
+                            
                             <td>
                               
                                 <c:out value="${media.genres[0].name}"/>
