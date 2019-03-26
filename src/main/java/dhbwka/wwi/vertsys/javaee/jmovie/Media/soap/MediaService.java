@@ -39,7 +39,7 @@ public class MediaService {
             @WebParam(name = "password", header = true) String password) throws UserBean.InvalidCredentialsException
             {
                 
-                userBean.checkPassword(username, password);    
+                userBean.validateUser(username, password);    
                 return mediaBean.search(null,null,null);
     }
 
