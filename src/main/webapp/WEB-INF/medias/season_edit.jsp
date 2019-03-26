@@ -102,6 +102,7 @@
                 </ul>
             </c:if>
             
+            <c:if test="${edit}">
             <%-- Episoden --%>
             <label>Episoden</label>
             <c:choose>
@@ -143,7 +144,7 @@
                 </c:otherwise>
             </c:choose>
             
-                <c:if test="${edit}">
+                
                     <div class="menuitem">
                         <a href="<c:url value="/app/medias/episode/new${season_form.values['season_id'][0]}/"/>">Episode hinzufügen</a>
                     </div>
