@@ -79,7 +79,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="media_release_date" value="${media_form.values["media_release_date"][0]}">
+                    <input type="date" name="media_release_date" value="${media_form.values["media_release_date"][0]}">
                     
                 </div>
 
