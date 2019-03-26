@@ -27,6 +27,10 @@
         <div class="menuitem">
             <a href="<c:url value="/app/medias/serie/new/"/>">Serie anlegen</a>
         </div>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/app/medias/movie/new/"/>">Film anlegen</a>
+        </div>
 
         <div class="menuitem">
             <a href="<c:url value="/app/medias/genres/"/>">Genre bearbeiten</a>
@@ -111,7 +115,7 @@
                             </td>
                         </c:if>
                             
-                            <td>
+                            <td style="text-overflow: ellipsis; max-width: 10em">
                               
                                 <c:out value="${media.genres[0].name}"/>
                                 
