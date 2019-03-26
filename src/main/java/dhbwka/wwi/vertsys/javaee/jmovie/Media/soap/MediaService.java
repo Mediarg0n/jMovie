@@ -10,7 +10,9 @@
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.soap;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.MediaBean;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.UserBean;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -32,13 +34,13 @@ public class MediaService {
     
     @WebMethod
     @WebResult(name = "Medien")
-    public String getSecretMessage(
+    public List<Media> getAllMedia(
             @WebParam(name = "username", header = true) String username,
-            @WebParam(name = "password", header = true) String password)
+            @WebParam(name = "password", header = true) String password) throws UserBean.InvalidCredentialsException
             {
-
-        
-        return "Streng geheim! For your eyes only!";
+                
+                userBean.checkPassword(username, password);    
+                return mediaBean.search(null,null,null);
     }
 
 }
