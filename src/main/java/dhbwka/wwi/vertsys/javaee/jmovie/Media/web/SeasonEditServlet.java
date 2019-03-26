@@ -62,12 +62,14 @@ public class SeasonEditServlet extends MediaEditServlet {
         Season season = this.getRequestedSeason(request);
         request.setAttribute("statuses", WatchStatus.values());
         
-        Collections.sort(season.getEpisodes(), new Comparator<Episode>() {
-        public int compare(Episode e1, Episode e2) {
-                return e1.getNr()-e2.getNr();
-            }
-        });
-        request.setAttribute("episodes", season.getEpisodes());
+        if(season.getEpisodes()!=null){
+            Collections.sort(season.getEpisodes(), new Comparator<Episode>() {
+            public int compare(Episode e1, Episode e2) {
+                    return e1.getNr()-e2.getNr();
+                }
+            });
+            request.setAttribute("episodes", season.getEpisodes());
+        }
 
         // Zu bearbeitende Serie einlesen
         HttpSession session = request.getSession();
