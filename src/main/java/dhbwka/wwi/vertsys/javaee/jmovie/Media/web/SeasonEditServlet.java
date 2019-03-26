@@ -12,6 +12,7 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.web;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.SeasonBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.SerieBean;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Episode;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Season;
@@ -25,6 +26,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +61,12 @@ public class SeasonEditServlet extends MediaEditServlet {
 
         Season season = this.getRequestedSeason(request);
         request.setAttribute("statuses", WatchStatus.values());
+        
+        Collections.sort(season.getEpisodes(), new Comparator<Episode>() {
+        public int compare(Episode e1, Episode e2) {
+                return e1.getNr()-e2.getNr();
+            }
+        });
         request.setAttribute("episodes", season.getEpisodes());
 
         // Zu bearbeitende Serie einlesen
