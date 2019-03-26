@@ -30,6 +30,10 @@
         <div class="menuitem">
             <a href="<c:url value="/app/medias/serie/new/"/>">Serie anlegen</a>
         </div>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/app/medias/movie/new/"/>">Film anlegen</a>
+        </div>
 
         <div class="menuitem">
             <a href="<c:url value="/app/medias/genres/"/>">Genre bearbeiten</a>

@@ -22,7 +22,7 @@
     <head>
         <meta charset="utf-8" />
 
-        <title>Aufgabenliste: ${title}</title>
+        <title>Medienliste: ${title}</title>
         
         <!-- https://pixabay.com/de/flach-design-symbol-icon-www-2126884/ -->
         <link rel="shortcut icon" href="<c:url value="/img/favicon.png"/>">
@@ -39,7 +39,7 @@
             <%-- Titelzeile --%>
             <div id="titlebar">
                 <div class="appname">
-                    Aufgabenliste
+                    Medienliste
                 </div>
                 <div class="content">
                     ${title}
