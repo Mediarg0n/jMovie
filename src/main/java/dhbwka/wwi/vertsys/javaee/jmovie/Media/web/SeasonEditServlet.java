@@ -44,7 +44,7 @@ import javax.servlet.http.HttpSession;
  * Seite zum Anlegen oder Bearbeiten einer Aufgabe.
  */
 @WebServlet(urlPatterns = "/app/medias/season/*")
-public class SeasonEditServlet extends MediaEditServlet {
+public class SeasonEditServlet extends  HttpServlet{
 
     @EJB
     SeasonBean seasonBean;

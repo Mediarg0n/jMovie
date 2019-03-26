@@ -87,6 +87,7 @@
                         <tr>
                             <td>
                                 <!-- Todo Unterscheidung ob Movie oder Serie  -->
+                                
                                 <a href="<c:url value="/app/medias/serie/${media.id}/"/>">
                                     <c:out value="${media.title}"/>
                                 </a>

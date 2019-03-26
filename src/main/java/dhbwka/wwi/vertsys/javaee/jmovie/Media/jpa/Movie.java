@@ -12,6 +12,7 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -28,7 +29,7 @@ public class Movie extends Media implements Serializable, Playable {
     @NotNull(message = "Die Länge des Films darf nicht leer sein.")
     private int movieLength;
 
-    @NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
+    //@NotNull(message = "Der Zeitpunkt darf nicht leer sein.")
     private int watchedUntil = 0;
 
         

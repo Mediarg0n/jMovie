@@ -55,7 +55,6 @@ public class Media implements Serializable {
     private String title;
 
     @Lob
-    @NotNull
     private String description;
     
     @NotNull(message = "Das Erscheinungsdatum des Films darf nicht leer sein.")

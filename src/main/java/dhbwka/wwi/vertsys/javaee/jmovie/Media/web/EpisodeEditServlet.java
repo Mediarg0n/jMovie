@@ -130,7 +130,7 @@ public class EpisodeEditServlet extends MediaEditServlet {
         if (episodeTitle != null && !episodeNr.trim().isEmpty()) {
             episode.setTitle(episodeTitle);
         }else {
-            errors.add("Es muss ein Title vergeben werden");
+            errors.add("Es muss ein Titel vergeben werden");
         }
         
         if (episodeLength != null && !episodeLength.trim().isEmpty()) {
