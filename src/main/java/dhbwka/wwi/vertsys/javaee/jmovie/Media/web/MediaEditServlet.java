@@ -88,12 +88,15 @@ public class MediaEditServlet extends HttpServlet{
             }
         }
 
-        Date releaseDate = WebUtils.parseDate(mediaReleaseDate);
-        if (releaseDate != null) {
+        
+        try{
+            Date releaseDate = Date.valueOf(mediaReleaseDate);        
             media.setReleaseDate(releaseDate);
-        } else {
-            errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
+        } catch (IllegalArgumentException ex){
+            errors.add("Das Datum muss angegeben werden und dem Format dd.mm.yyyy entsprechen.");
         }
+        
+        
 
         try {
             media.setStatus(WatchStatus.valueOf(mediaStatus));
@@ -140,7 +143,7 @@ public class MediaEditServlet extends HttpServlet{
         }
 
         values.put("media_release_date", new String[]{
-            WebUtils.formatDate(media.getReleaseDate())
+            media.getReleaseDate().toString()
         });
 
 
