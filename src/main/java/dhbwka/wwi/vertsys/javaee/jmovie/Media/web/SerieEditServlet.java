@@ -11,8 +11,10 @@ package dhbwka.wwi.vertsys.javaee.jmovie.Media.web;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb.SerieBean;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Episode;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
+import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Season;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Serie;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.WatchStatus;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.web.WebUtils;
@@ -22,6 +24,8 @@ import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.ValidationBean;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,8 +61,15 @@ public class SerieEditServlet extends MediaEditServlet {
 
         Serie serie = this.getRequestedSerie(request);
         super.doGet(request, serie);
-        request.setAttribute("seasons", serie.getSeasons());
-
+                
+        if(serie.getSeasons()!=null){
+            Collections.sort(serie.getSeasons(), new Comparator<Season>() {
+            public int compare(Season e1, Season e2) {
+                    return e1.getNr()-e2.getNr();
+                }
+            });
+            request.setAttribute("seasons", serie.getSeasons());
+        }
         
         
         // Anfrage an die JSP weiterleiten
