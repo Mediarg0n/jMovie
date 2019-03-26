@@ -72,6 +72,18 @@ public class UserBean {
         user.setPassword(newPassword);
     }
     
+    
+    @RolesAllowed("app-user")
+    public void checkPassword(String username, String password) throws InvalidCredentialsException{
+        
+        User user = em.find(User.class,username);
+        
+        if (user == null || !user.checkPassword(password)) {
+            throw new InvalidCredentialsException("Benutzername oder Passwort sind falsch.");
+        }
+              
+    }
+    
     /**
      * Benutzer löschen
      * @param user Zu löschender Benutzer
