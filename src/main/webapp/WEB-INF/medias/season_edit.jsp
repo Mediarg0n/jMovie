@@ -75,7 +75,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="number" name="season_nr" value="${season_form.values["season_nr"][0]}">
+                    <input type="number" name="season_nr" value="${season_form.values["season_nr"][0]}" min="0">
                 </div>
 
                 <%-- Button zum Abschicken --%>
