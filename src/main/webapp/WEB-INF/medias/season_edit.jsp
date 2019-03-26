@@ -47,6 +47,14 @@
                     <input type="text" name="season_serie" value="${season_form.values["season_serie"][0]}" readonly="readonly">
                 </div>
 
+                <label for="season_nr">
+                    Nr:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="number" name="season_nr" value="${season_form.values["season_nr"][0]}">
+                </div>
+
                 <label for="season_release_date">
                     Veröffentlicht am:
                     <span class="required">*</span>
@@ -68,14 +76,6 @@
                             </option>
                         </c:forEach>
                     </select>
-                </div>
-
-                <label for="season_nr">
-                    Nr:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side">
-                    <input type="number" name="season_nr" value="${season_form.values["season_nr"][0]}">
                 </div>
 
                 <%-- Button zum Abschicken --%>

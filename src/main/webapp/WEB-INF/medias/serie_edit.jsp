@@ -53,6 +53,28 @@
                 <div class="side-by-side">
                     <input type="text" name="media_owner" value="${media_form.values["media_owner"][0]}" readonly="readonly">
                 </div>
+                
+                <label for="media_title">
+                    Titel:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="media_title" value="${media_form.values["media_title"][0]}">
+                </div>
+                
+                <label for="media_status">
+                    Status:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side margin">
+                    <select name="media_status">
+                        <c:forEach items="${statuses}" var="status">
+                            <option value="${status}" ${media_form.values["media_status"][0] == status ? 'selected' : ''}>
+                                <c:out value="${status.label}"/>
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
 
                 <label for="media_genres">Genre:</label>
                 <div class="side-by-side">
@@ -81,28 +103,6 @@
                 <div class="side-by-side">
                     <input type="date" name="media_release_date" value="${media_form.values["media_release_date"][0]}">
                     
-                </div>
-
-                <label for="media_status">
-                    Status:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side margin">
-                    <select name="media_status">
-                        <c:forEach items="${statuses}" var="status">
-                            <option value="${status}" ${media_form.values["media_status"][0] == status ? 'selected' : ''}>
-                                <c:out value="${status.label}"/>
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-                <label for="media_title">
-                    Titel:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side">
-                    <input type="text" name="media_title" value="${media_form.values["media_title"][0]}">
                 </div>
 
                 <label for="media_description">
