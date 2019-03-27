@@ -18,5 +18,16 @@ body{
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
-     color: #86c232;
+    color: #86c232;
 }
+
+a, a:visited {
+    color: #61892f;
+    text-decoration: none;
+        font-weight: bold;
+
+}
+a:hover {
+    color: #61892f;
+    text-decoration: underline;
+  }
