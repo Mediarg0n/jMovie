@@ -74,7 +74,7 @@ public class UserBean {
     
     
     @RolesAllowed("app-user")
-    public void validateUser(String username, String password) throws InvalidCredentialsException{
+    public void checkPassword(String username, String password) throws InvalidCredentialsException{
         
         User user = em.find(User.class,username);
         
