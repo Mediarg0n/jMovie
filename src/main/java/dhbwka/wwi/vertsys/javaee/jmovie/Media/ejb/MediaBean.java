@@ -9,7 +9,6 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.Media.ejb;
 
-
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.ejb.EntityBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Genre;
