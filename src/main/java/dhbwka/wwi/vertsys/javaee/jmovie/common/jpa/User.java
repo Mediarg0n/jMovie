@@ -9,7 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Media;
+import dhbwka.wwi.vertsys.javaee.jmovie.media.jpa.Media;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
