@@ -7,12 +7,11 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa;
+package dhbwka.wwi.vertsys.javaee.jmovie.media.jpa;
 
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -23,7 +22,7 @@ import javax.validation.constraints.NotNull;
  * @author D070429
  */
 @Entity
-public class Movie extends Media implements Serializable, Playable {
+public class Movie extends Media implements Serializable {
 
     
     @NotNull(message = "Die Länge des Films darf nicht leer sein.")
@@ -49,23 +48,19 @@ public class Movie extends Media implements Serializable, Playable {
     
     
 
-    @Override
     public int getMovieLength() {
         return movieLength;
     }
 
-    @Override
     public void setMovieLength(int movieLength) {
         this.movieLength = movieLength;
     }
     
     
-    @Override
     public int getWatchedUntil() {
         return watchedUntil;
     }
 
-    @Override
     public void setWatchedUntil(int watchedUntil) {
         this.watchedUntil = watchedUntil;
     }

@@ -12,7 +12,6 @@ package dhbwka.wwi.vertsys.javaee.jmovie.media.jpa;
 import dhbwka.wwi.vertsys.javaee.jmovie.common.jpa.User;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
