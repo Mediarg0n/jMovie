@@ -73,19 +73,7 @@ public class UserBean {
     }
     
     
-    /**
-     Überprüfung des Passworts für Webservice
-     **/
-    @RolesAllowed("app-user")
-    public void validateUser(String username, String password) throws InvalidCredentialsException{
-        
-        User user = em.find(User.class,username);
-        
-        if (user == null || !user.checkPassword(password)) {
-            throw new InvalidCredentialsException("Benutzername oder Passwort sind falsch.");
-        }
-              
-    }
+   
     
     /**
      * Benutzer löschen
