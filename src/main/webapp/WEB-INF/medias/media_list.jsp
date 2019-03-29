@@ -91,7 +91,7 @@
                     <c:forEach items="${medias}" var="media">
                         <tr>
                             
-                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Movie'}">
+                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.media.jpa.Movie'}">
                             <td> 
                                 <c:out value="Film"/>
                             </td>
@@ -103,7 +103,7 @@
                             </td>
                         </c:if>
                             
-                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.Media.jpa.Serie'}">
+                        <c:if test="${media['class'].name == 'dhbwka.wwi.vertsys.javaee.jmovie.media.jpa.Serie'}">
                             <td>
                                 <c:out value="Serie"/>
                             </td>
