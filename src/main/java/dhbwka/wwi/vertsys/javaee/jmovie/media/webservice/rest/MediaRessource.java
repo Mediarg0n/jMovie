@@ -49,16 +49,17 @@ public class MediaRessource {
     public Media getSong(@PathParam("id") long id) {
         return this.mediaBean.findById(id);
     }
+   
     
     //Medien nach Titel, Genre und Status suchen
     //Sortiert nach Datum
-    @GET
-    public List<Media> search(@QueryParam("search_title") String title, @QueryParam("search_genre") Genre genre, @QueryParam("search_status") WatchStatus status){
+    /*@GET
+    public List<Media> search(String title, Genre genre,WatchStatus status){
         
         return mediaBean.search(title,genre,status);
         
          
-    }
+    }*/
     
     
     
