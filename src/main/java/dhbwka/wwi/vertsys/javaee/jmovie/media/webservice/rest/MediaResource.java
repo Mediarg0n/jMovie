@@ -31,7 +31,7 @@ import javax.ws.rs.core.MediaType;
 @Path("Medias")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class MediaRessource {
+public class MediaResource {
     
     
     @EJB
@@ -46,7 +46,7 @@ public class MediaRessource {
     //Medium durch Id finden
     @GET
     @Path("{id}")
-    public Media getSong(@PathParam("id") long id) {
+    public Media getMedia(@PathParam("id") long id) {
         return this.mediaBean.findById(id);
     }
    

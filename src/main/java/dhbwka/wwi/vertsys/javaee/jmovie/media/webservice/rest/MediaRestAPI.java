@@ -27,7 +27,7 @@ public class MediaRestAPI extends Application {
         Set<Class<?>> resources = new HashSet<>();
 
         // Hier für jede Webservice-Klasse eine Zeile hinzufügen
-        resources.add(MediaRessource.class);
+        resources.add(MediaResource.class);
 
         return resources;
     }
