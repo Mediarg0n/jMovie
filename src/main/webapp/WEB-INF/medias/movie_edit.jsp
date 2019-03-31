@@ -54,6 +54,14 @@
                 <div class="side-by-side">
                     <input type="text" name="media_owner" value="${media_form.values["media_owner"][0]}" readonly="readonly">
                 </div>
+                
+                <label for="media_title">
+                    Titel:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="media_title" value="${media_form.values["media_title"][0]}">
+                </div>
 
                 <label for="media_genres">Genre:</label>
                 <div class="side-by-side">
@@ -106,13 +114,7 @@
                     <input type="number" name="movie_length" value="${media_form.values["movie_length"][0]}">
                 </div>    
 
-                <label for="media_title">
-                    Titel:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side">
-                    <input type="text" name="media_title" value="${media_form.values["media_title"][0]}">
-                </div>
+               
 
                 <label for="media_description">
                     Beschreibung:
