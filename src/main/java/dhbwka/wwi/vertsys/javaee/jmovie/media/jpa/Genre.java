@@ -42,7 +42,7 @@ public class Genre implements Serializable {
     @Size(min = 3, max = 30, message = "Der Name muss zwischen drei und 30 Zeichen lang sein.")
     private String name;
 
-    @ManyToMany(mappedBy = "genres",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genres",fetch = FetchType.LAZY)
     List<Media> medias = new ArrayList<>();
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
