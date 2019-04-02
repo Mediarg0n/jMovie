@@ -201,7 +201,7 @@ public class User implements Serializable {
      */
     public List<String> getGroups() {
         List<String> groupsCopy = new ArrayList<>();
-
+        
         this.groups.forEach((groupname) -> {
             groupsCopy.add(groupname);
         });
