@@ -28,14 +28,22 @@ public class RESTMedia implements Serializable {
     private String releaseDate;
     private WatchStatus status = WatchStatus.NOT_WATCHED;
     
+    private String type;
+    
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public RESTMedia() {
+        super();
+        if(this instanceof RESTSerie)
+            type = "SERIE";
+        if(this instanceof RESTMovie)
+            type = "MOVIE";
     }
 
 
     
     public RESTMedia(RESTUser owner, List<Genre> genres, String title, String description, Date releaseDate) {
+        this();
         this.owner = owner;
         this.genres = genres;
         this.title = title;
@@ -44,6 +52,7 @@ public class RESTMedia implements Serializable {
     }
     
     public RESTMedia(Media media) {
+        this();
         this.id = media.getId();
         this.owner = new RESTUser(media.getOwner());
         this.genres = media.getGenres();
@@ -112,6 +121,14 @@ public class RESTMedia implements Serializable {
 
     public void setStatus(WatchStatus status) {
         this.status = status;
+    }
+    
+    public String getType(){
+        return type;
+    }
+    
+    public void setType(String type){
+        this.type = type;
     }
     //</editor-fold>
     
