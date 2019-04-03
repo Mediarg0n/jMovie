@@ -279,7 +279,7 @@ public class EpisodeEditServlet extends MediaEditServlet {
         });
         
         values.put("episode_length", new String[]{
-            "" + episode.geLength()
+            "" + episode.getLength()
         });
 
 
