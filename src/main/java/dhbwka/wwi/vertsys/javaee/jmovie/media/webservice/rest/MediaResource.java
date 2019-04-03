@@ -59,9 +59,14 @@ public class MediaResource {
     
     //Medium durch Id finden
     @GET
-    @Path("{id}")
-    public Media getMedia(@PathParam("id") long id) {
-        return this.mediaBean.findById(id);
+    @Path("/{id}/")
+    public RESTMedia getMedia(@PathParam("id") long id) {
+        Media media = this.mediaBean.findById(id);
+        if(media instanceof Serie)
+            return new RESTSerie((Serie) media);
+        if(media instanceof Movie)
+            return new RESTMovie((Movie) media);
+        return null;
     }
    
     
