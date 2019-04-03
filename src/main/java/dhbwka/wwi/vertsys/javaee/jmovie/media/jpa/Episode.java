@@ -46,7 +46,7 @@ public class Episode implements Serializable {
     @Max(value = 50, message = "Die Episodennummer muss zwischen 1 und 50 liegen")
     private int nr;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull(message = "Die Episode muss einer Season zugeordet werden")
     private Season season;
     

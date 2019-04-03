@@ -25,7 +25,6 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import net.minidev.json.annotate.JsonIgnore;
 
 /**
  *

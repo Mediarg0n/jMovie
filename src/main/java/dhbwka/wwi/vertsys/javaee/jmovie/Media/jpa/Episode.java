@@ -136,7 +136,7 @@ public class Episode implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public int geLength() {
+    public int getLength() {
         return length;
     }
 
