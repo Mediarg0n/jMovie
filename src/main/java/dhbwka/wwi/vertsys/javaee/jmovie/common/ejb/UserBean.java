@@ -129,5 +129,9 @@ public class UserBean {
             super(message);
         }
     }
+    
+    public User findByUsername(String username) {
+        return this.em.find(User.class, username);
+    }
 
 }
