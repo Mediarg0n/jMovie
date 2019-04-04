@@ -9,6 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.jmovie.media.webservice.rest;
 
+import dhbwka.wwi.vertsys.javaee.jmovie.media.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.media.ejb.MediaBean;
 import dhbwka.wwi.vertsys.javaee.jmovie.media.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.jmovie.media.jpa.Media;
@@ -43,6 +44,9 @@ public class MediaResource {
     @EJB
     private MediaBean mediaBean;
     
+    @EJB 
+    private GenreBean GenreBean;
+    
     //Alle Medien finden
     @GET
     public List<RESTMedia> findMedias() {
@@ -72,13 +76,23 @@ public class MediaResource {
     
     //Medien nach Titel, Genre und Status suchen
     //Sortiert nach Datum
-    /*@GET
-    public List<Media> search(String title, Genre genre,WatchStatus status){
+    @GET
+    @Path("/search/")
+    public List<RESTMedia> search(
+            @QueryParam("title") String title,
+            @QueryParam("genre") String genre,
+            @QueryParam("status") String status) {
         
-        return mediaBean.search(title,genre,status);
+        List<RESTMedia> list = new ArrayList<>();
+        for(Media media : mediaBean.search(title,
+                GenreBean.find(genre),
+                ((status!=null)?(WatchStatus.valueOf(status)):null))){
+            list.add(new RESTMedia(media));
+        }
+        return list;
         
          
-    }*/
+    }
     
     
     

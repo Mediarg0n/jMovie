@@ -38,4 +38,9 @@ public class GenreBean extends EntityBean<Genre, Long>{
         return this.em.createQuery("SELECT c FROM Genre c ORDER BY c.name").getResultList();
     }
     
+    public Genre find(String name){
+        return (Genre) this.em.createQuery("SELECT c FROM Genre c WHERE c.name=:value1") 
+                .setParameter("value1", name).getSingleResult();
+    }
+    
 }
