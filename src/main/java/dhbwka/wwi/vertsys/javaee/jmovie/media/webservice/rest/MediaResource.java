@@ -87,7 +87,10 @@ public class MediaResource {
         for(Media media : mediaBean.search(title,
                 GenreBean.find(genre),
                 ((status!=null)?(WatchStatus.valueOf(status)):null))){
-            list.add(new RESTMedia(media));
+            if(media instanceof Serie)
+                list.add(new RESTSerie((Serie) media));
+            if(media instanceof Movie)
+                list.add(new RESTMovie((Movie) media));
         }
         return list;
         
