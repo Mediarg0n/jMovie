@@ -28,6 +28,7 @@ public class MediaRestAPI extends Application {
 
         // Hier für jede Webservice-Klasse eine Zeile hinzufügen
         resources.add(MediaResource.class);
+        resources.add(SerieResource.class);
 
         return resources;
     }

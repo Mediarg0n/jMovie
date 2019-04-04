@@ -81,7 +81,7 @@ public class SerieBean extends EntityBean<Serie, Long> {
         
         // WHERE s.genre = :genre
         if (genre != null) {
-            p = cb.and(p, cb.equal(from.get("genre"), genre));
+            p = cb.and(p, cb.isMember(genre,from.get("genres")));
             query.where(p);
         }
         
