@@ -77,7 +77,7 @@ public class SerieResource {
         
         List<RESTSerie> list = new ArrayList<>();
         for(Serie serie : serieBean.search(title,
-                GenreBean.find(genre),
+                ((genre!=null)?(GenreBean.find(genre)):null),
                 ((status!=null)?(WatchStatus.valueOf(status)):null))){
          
             list.add(new RESTSerie((Serie) serie));

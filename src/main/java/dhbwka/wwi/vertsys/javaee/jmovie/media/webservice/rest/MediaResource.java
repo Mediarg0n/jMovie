@@ -83,9 +83,10 @@ public class MediaResource {
             @QueryParam("genre") String genre,
             @QueryParam("status") String status) {
         
-        List<RESTMedia> list = new ArrayList<>();
+        List<RESTMedia> list = new ArrayList<RESTMedia>();
+        
         for(Media media : mediaBean.search(title,
-                GenreBean.find(genre),
+                ((genre!=null)?(GenreBean.find(genre)):null),
                 ((status!=null)?(WatchStatus.valueOf(status)):null))){
             if(media instanceof Serie)
                 list.add(new RESTSerie((Serie) media));

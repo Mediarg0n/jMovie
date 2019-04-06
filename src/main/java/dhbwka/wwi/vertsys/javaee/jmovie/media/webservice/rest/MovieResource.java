@@ -70,7 +70,7 @@ public class MovieResource {
         
         List<RESTMovie> list = new ArrayList<>();
         for(Movie movie : movieBean.search(title,
-                GenreBean.find(genre),
+                ((genre!=null)?(GenreBean.find(genre)):null),
                 ((status!=null)?(WatchStatus.valueOf(status)):null))){
          
             list.add(new RESTMovie((Movie) movie));
