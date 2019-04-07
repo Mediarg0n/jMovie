@@ -1,4 +1,4 @@
-Beispielanwendung "jMovie"
+jMovie
 =========================
 
 Kurzbeschreibung
@@ -14,8 +14,8 @@ Verwendete Technologien
 -----------------------
 
 Die App nutzt Maven als Build-Werkzeug und zur Paketverwaltung. Auf diese Weise
-werden die für Jakarta EE notwendigen APIs, darüber hinaus aber keine weiteren
-Abhängigkeiten, in das Projekt eingebunden. Der Quellcode der Anwendung ist dabei
+werden die für Jakarta EE notwendigen APIs, darüber hinaus wird noch Bootstrap für die Multiselect Felder
+in das Projekt eingebunden. Der Quellcode der Anwendung ist dabei
 wie folgt strukturiert:
 
  * **Servlets** dienen als Controller-Schicht und empfangen sämtliche HTTP-Anfragen.
